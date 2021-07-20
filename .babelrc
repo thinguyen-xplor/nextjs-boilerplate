@@ -1,0 +1,27 @@
+{
+  "presets": ["next/babel"],
+  "plugins": [
+    [
+      "react-intl-auto",
+      {
+        "separator": "_"
+      }
+    ],
+    [
+      "module-resolver",
+      {
+        "root": "./src",
+        "extensions": [".ts", ".tsx", ".js"]
+      }
+    ],
+    [
+      "transform-imports",
+      {
+        "lodash": {
+          "transform": "lodash/${member}",
+          "preventFullImport": true
+        }
+      }
+    ]
+  ]
+}

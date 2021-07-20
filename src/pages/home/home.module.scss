@@ -1,0 +1,23 @@
+.header {
+  @include flex-space-between-center;
+
+  background-color: $color-primary;
+  padding: 0 10px;
+
+  .hi {
+    width: 140px;
+    color: $color-white;
+  }
+}
+
+.posts-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.loading {
+  margin-top: 18px;
+  text-align: center;
+}
