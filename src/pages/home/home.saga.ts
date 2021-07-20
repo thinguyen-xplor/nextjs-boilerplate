@@ -1,8 +1,8 @@
 import { takeLatest, call, put } from 'redux-saga/effects';
 
-import { GET_POSTS_START, getPostsSuccess } from 'entities/post/post.actions';
-import { Post } from 'entities/post/post.types';
-import services from 'entities/post/post.services';
+import { GET_POSTS_START, getPostsSuccess } from './home.actions';
+import { Post } from './home.types';
+import services from './home.services';
 
 export function* getPostsStart(): any {
   const result: Post[] = yield call(services.getPosts);

@@ -2,9 +2,9 @@ import React, { FC } from 'react';
 import { GetServerSideProps } from 'next';
 
 import Home from 'pages/home';
-import { User } from 'entities/user/user.types';
-import postServices from 'entities/post/post.services';
-import { Post } from 'entities/post/post.types';
+import { User } from 'common/types';
+import { Post } from 'pages/home/home.types';
+import homeServices from 'pages/home/home.services';
 
 export interface HomeProps {
   user: User;
@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     email: 'jarvis@gmail.com',
   };
 
-  const { data: posts } = await postServices.getPosts();
+  const { data: posts } = await homeServices.getPosts();
 
   return {
     props: {

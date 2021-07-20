@@ -1,15 +1,18 @@
 import { MessageDescriptor } from 'react-intl';
 
-import { RequestState } from 'entities/request/request.types';
-import { PostState } from 'entities/post/post.types';
+import { HomeState } from 'pages/home/home.types';
 
 /**
  * Redux
  */
 
+export interface RequestState {
+  [key: string]: boolean;
+}
+
 export interface GlobalState {
   request: RequestState;
-  post: PostState;
+  home: HomeState;
 }
 
 export interface Action {
@@ -35,4 +38,13 @@ export interface PureMessage {
 
 export interface FormattedMessage {
   [key: string]: string;
+}
+
+/**
+ * App
+ */
+
+export interface User {
+  name: string;
+  email: string;
 }

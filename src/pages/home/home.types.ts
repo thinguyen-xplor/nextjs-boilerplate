@@ -1,5 +1,12 @@
-import { User } from 'entities/user/user.types';
-import { Post } from 'entities/post/post.types';
+import { User } from 'common/types';
+
+export interface Post {
+  title: string;
+}
+
+export interface HomeState {
+  posts: Post[];
+}
 
 export interface HomeProps {
   user: User;

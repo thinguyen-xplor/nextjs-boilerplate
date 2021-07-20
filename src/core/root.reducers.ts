@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import requestReducers from 'entities/request/request.reducers';
-import postReducers from 'entities/post/post.reducers';
+import requestReducers from 'core/request.reducers';
+import postReducers from 'pages/home/home.reducers';
 
 export default combineReducers({
   ...requestReducers,

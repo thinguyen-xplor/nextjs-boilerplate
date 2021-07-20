@@ -1,18 +1,16 @@
 import React, { FC, useContext } from 'react';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { get } from 'lodash';
 
 import { GlobalState } from 'common/types';
-import { Post } from 'entities/post/post.types';
-import { getPostsStart } from 'entities/post/post.actions';
 import { useIntlMessages, useRequest } from 'hooks';
 import { Languages } from 'common/constants';
 import { LangContext } from 'common/contexts';
 import Button from 'components/button';
 import Card from 'components/card';
 
-import { HomeProps } from './home.types';
+import { HomeProps, Post } from './home.types';
+import { getPostsStart } from './home.actions';
 import pureMessages from './home.messages';
 import styles from './home.module.scss';
 
@@ -20,7 +18,7 @@ const Home: FC<HomeProps> = (props) => {
   const { user, initPosts } = props;
 
   const dispatch = useDispatch();
-  const { posts } = useSelector((state: GlobalState) => state.post);
+  const { posts } = useSelector((state: GlobalState) => state.home);
 
   const { isGetPostsLoading } = useRequest(['GET_POSTS']);
   const messages = useIntlMessages(pureMessages);
@@ -68,10 +66,6 @@ const Home: FC<HomeProps> = (props) => {
       {isGetPostsLoading && <div className={styles.loading}>Loading...</div>}
     </>
   );
-};
-
-Home.propTypes = {
-  initPosts: PropTypes.array.isRequired,
 };
 
 export default Home;

@@ -1,13 +1,13 @@
 import { Action } from 'common/types';
 
-import { GET_POSTS_SUCCESS } from './post.actions';
-import { PostState } from './post.types';
+import { GET_POSTS_SUCCESS } from './home.actions';
+import { HomeState } from './home.types';
 
 const initialState = {
   posts: [],
 };
 
-const reducers = (state = initialState, { type, payload }: Action): PostState => {
+const reducers = (state = initialState, { type, payload }: Action): HomeState => {
   switch (type) {
     case GET_POSTS_SUCCESS: {
       return {
@@ -22,5 +22,5 @@ const reducers = (state = initialState, { type, payload }: Action): PostState =>
 };
 
 export default {
-  post: reducers,
+  home: reducers,
 };

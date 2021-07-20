@@ -1,6 +1,4 @@
-import { GlobalState, Action } from 'common/types';
-
-import { RequestState } from './request.types';
+import { GlobalState, RequestState, Action } from 'common/types';
 
 const reducers = (state: GlobalState, action: Action): GlobalState | RequestState => {
   const { type } = action;
