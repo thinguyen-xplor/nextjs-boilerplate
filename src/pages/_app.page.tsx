@@ -8,8 +8,7 @@ import { Languages } from 'common/constants';
 import { LangContext } from 'common/contexts';
 import enLang from 'languages/en.json';
 import viLang from 'languages/vi.json';
-
-import '../src/styles/base.scss';
+import 'styles/base.scss';
 
 const languages = Object.freeze({
   [Languages.EN]: enLang,

@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Button from 'components/button';
 
-import Tour from '../tour';
+import Tour from '../index.page';
 
 describe('<Home />', () => {
   const getShallowComp = () => shallow(<Tour />);

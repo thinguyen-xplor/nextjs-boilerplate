@@ -1,5 +1,6 @@
 import React, { FC, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { GetServerSideProps } from 'next';
 import { get } from 'lodash';
 
 import { GlobalState } from 'common/types';
@@ -11,6 +12,7 @@ import Card from 'components/card';
 
 import { HomeProps, Post } from './home.types';
 import { getPostsStart } from './home.actions';
+import homeServices from './home.services';
 import pureMessages from './home.messages';
 import styles from './home.module.scss';
 
@@ -66,6 +68,22 @@ const Home: FC<HomeProps> = (props) => {
       {isGetPostsLoading && <div className={styles.loading}>Loading...</div>}
     </>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const user = {
+    name: 'Jarvis',
+    email: 'jarvis@gmail.com',
+  };
+
+  const { data: posts } = await homeServices.getPosts();
+
+  return {
+    props: {
+      user,
+      initPosts: posts.slice(0, 20),
+    },
+  };
 };
 
 export default Home;
