@@ -3,7 +3,7 @@ import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { IntlProvider } from 'react-intl';
 
-import store from 'core/store';
+import { wrapper } from 'core/store';
 import { Languages } from 'common/constants';
 import { LangContext } from 'common/contexts';
 import enLang from 'languages/en.json';
@@ -42,4 +42,4 @@ const MyApp = (props: AppProps) => {
   );
 };
 
-export default store.withRedux(MyApp);
+export default wrapper.withRedux(MyApp);
