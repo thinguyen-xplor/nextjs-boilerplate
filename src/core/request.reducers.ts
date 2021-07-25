@@ -3,8 +3,7 @@ import { AnyAction } from '@reduxjs/toolkit';
 
 import { RequestState } from 'common/types';
 
-const reducers: Reducer<RequestState, AnyAction> = (state = {}, action) => {
-  const { type } = action;
+const reducers: Reducer<RequestState, AnyAction> = (state = {}, { type }) => {
   const matches = /(.*)_(START|SUCCESS|FAILED)/.exec(type);
 
   if (!matches) return state;
