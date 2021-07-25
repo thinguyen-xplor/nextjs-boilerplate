@@ -1,9 +1,9 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from '@reduxjs/toolkit';
 
 import requestReducers from 'core/request.reducers';
-import postReducers from 'pages/home/home.reducers';
+import homeReducers from 'pages/home/home.reducers';
 
 export default combineReducers({
   ...requestReducers,
-  ...postReducers,
+  ...homeReducers,
 });

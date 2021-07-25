@@ -1,8 +1,10 @@
-import React, { FC, useContext } from 'react';
+import React, { useContext } from 'react';
+import { NextPage } from 'next';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetServerSideProps } from 'next';
+import { END } from 'redux-saga';
 import { get } from 'lodash';
 
+import { wrapper } from 'core/store';
 import { GlobalState } from 'common/types';
 import { useIntlMessages, useRequest } from 'hooks';
 import { Languages } from 'common/constants';
@@ -12,12 +14,11 @@ import Card from 'components/card';
 
 import { HomeProps, Post } from './home.types';
 import { getPostsStart } from './home.actions';
-import homeServices from './home.services';
 import pureMessages from './home.messages';
 import styles from './home.module.scss';
 
-const Home: FC<HomeProps> = (props) => {
-  const { user, initPosts } = props;
+const Home: NextPage<HomeProps> = (props) => {
+  const { user } = props;
 
   const dispatch = useDispatch();
   const { posts } = useSelector((state: GlobalState) => state.home);
@@ -49,11 +50,7 @@ const Home: FC<HomeProps> = (props) => {
     );
   };
 
-  const renderPosts = () => {
-    const finalPosts = posts.length === 0 ? initPosts : posts;
-
-    return finalPosts.map((post: Post) => <Card key={post.title}>{post.title}</Card>);
-  };
+  const renderPosts = () => posts.map((post: Post) => <Card key={post.title}>{post.title}</Card>);
 
   return (
     <>
@@ -70,20 +67,18 @@ const Home: FC<HomeProps> = (props) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps = wrapper.getServerSideProps((store) => async () => {
+  store.dispatch(getPostsStart());
+  store.dispatch(END);
+  await store.sagaTask.toPromise();
+
   const user = {
     name: 'Jarvis',
-    email: 'jarvis@gmail.com',
   };
-
-  const { data: posts } = await homeServices.getPosts();
 
   return {
-    props: {
-      user,
-      initPosts: posts.slice(0, 20),
-    },
+    props: { user },
   };
-};
+});
 
 export default Home;

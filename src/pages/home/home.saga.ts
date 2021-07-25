@@ -5,8 +5,8 @@ import { Post } from './home.types';
 import services from './home.services';
 
 export function* getPostsStart(): any {
-  const result: Post[] = yield call(services.getPosts);
-  yield put(getPostsSuccess(result));
+  const posts: Post[] = yield call(services.getPosts);
+  yield put(getPostsSuccess(posts));
 }
 
 export default [takeLatest(GET_POSTS_START, getPostsStart)];

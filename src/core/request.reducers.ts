@@ -1,10 +1,13 @@
-import { GlobalState, RequestState, Action } from 'common/types';
+import { Reducer } from 'react';
+import { AnyAction } from '@reduxjs/toolkit';
 
-const reducers = (state: GlobalState, action: Action): GlobalState | RequestState => {
+import { RequestState } from 'common/types';
+
+const reducers: Reducer<RequestState, AnyAction> = (state = {}, action) => {
   const { type } = action;
   const matches = /(.*)_(START|SUCCESS|FAILED)/.exec(type);
 
-  if (!matches) return state || {};
+  if (!matches) return state;
 
   const [, requestName, requestState] = matches;
   const requestLoadingName = `${requestName}_LOADING`;

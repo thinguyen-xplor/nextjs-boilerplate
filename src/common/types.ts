@@ -15,11 +15,6 @@ export interface GlobalState {
   home: HomeState;
 }
 
-export interface Action {
-  type: string;
-  payload?: any;
-}
-
 /**
  * Request
  */

@@ -10,5 +10,4 @@ export interface HomeState {
 
 export interface HomeProps {
   user: User;
-  initPosts: Post[];
 }
