@@ -17,7 +17,7 @@ const rootReducers: Reducer<RootState, AnyAction> = (state, action) => {
     return { ...state, ...action.payload };
   }
 
-  return combinedReducers;
+  return combinedReducers(state, action);
 };
 
 export default rootReducers as any;
