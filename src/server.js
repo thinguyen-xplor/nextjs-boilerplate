@@ -12,7 +12,7 @@ app.prepare().then(() => {
     const { pathname, query } = parsedUrl;
 
     if (pathname === '/') {
-      app.render(req, res, '/home', query);
+      app.render(req, res, '/users', query);
       return;
     }
 

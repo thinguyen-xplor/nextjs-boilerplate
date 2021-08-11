@@ -10,7 +10,7 @@ const initialState = {
 const reducers = createReducer<HomeState>(initialState, (builder) => {
   builder.addCase(GET_POSTS_SUCCESS, (state, action) => ({
     ...state,
-    posts: action.payload,
+    posts: action.payload.slice(0, 20),
   }));
 });
 

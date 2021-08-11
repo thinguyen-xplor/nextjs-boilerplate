@@ -3,10 +3,10 @@ import { shallow } from 'enzyme';
 
 import Button from 'components/button';
 
-import Tour from '../index.page';
+import Users from '../index.page';
 
-describe('<Home />', () => {
-  const getShallowComp = () => shallow(<Tour />);
+describe('<Users />', () => {
+  const getShallowComp = () => shallow(<Users />);
 
   it('should render a welcome message', () => {
     const comp = getShallowComp();

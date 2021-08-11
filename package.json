@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "node src/server.js",
     "build": "next build",
-    "start": "npm run build && NODE_ENV=production node src/server.js",
+    "start": "node src/server.js",
     "lint": "next lint",
     "format": "prettier {config,pages,src}/**/*.{js,ts,tsx} --write",
     "clean": "npm run format && npm run lint",
